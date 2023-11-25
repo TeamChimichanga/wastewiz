@@ -15,7 +15,11 @@ const Routes = () => {
       {loggedIn ? (
         <>
           <Stack.Screen name='Map' options={{ title: "WasteWiz 🧙" }} component={MapScreen} />
-          <Stack.Screen name='Scan' options={{ title: "WasteWiz 🧙" }} component={ScanScreen} />
+          <Stack.Screen
+            name='Scan'
+            options={{ title: "WasteWiz 🧙", headerBackTitle: "Back to Map" }}
+            component={ScanScreen}
+          />
         </>
       ) : (
         <Stack.Screen name='Login' component={LoginScreen} />

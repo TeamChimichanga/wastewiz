@@ -2,17 +2,27 @@ import React, { useEffect, useMemo, useRef } from "react";
 import { useAuth } from "../context/auth-context";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import MapFilters from "../components/map-filters";
-import { Box, Icon, Pressable, StarIcon } from "@gluestack-ui/themed";
+import { AddIcon, Box, Fab, FabIcon, FabLabel, Icon, Pressable, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import useLocation from "../hooks/use-location";
-import { Text } from "@gluestack-ui/themed";
 
 const MapScreen = ({ navigation }) => {
   const { user } = useAuth();
   const filters = useFilters();
-  const { location, BUDAPEST } = useLocation();
+  const { location, BUDAPEST, getUserLocation } = useLocation();
   const [region, setRegion] = React.useState(null);
+  const mapRef = useRef(null);
+
+  _handleOnPointsClick = async () => {
+    await getUserLocation();
+    mapRef.current.animateToRegion({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  };
 
   // ref
   const bottomSheetRef = useRef(null);
@@ -36,6 +46,7 @@ const MapScreen = ({ navigation }) => {
     <Box style={{ flex: 1 }}>
       <Box style={{ flex: 1, height: "50%" }}>
         <MapView
+          ref={mapRef}
           style={{ width: "100%", height: "70%" }}
           initialRegion={{
             latitude: BUDAPEST.latitude,
@@ -47,29 +58,36 @@ const MapScreen = ({ navigation }) => {
           maxZoomLevel={16}
           region={region}
           showsUserLocation={true}
-          provider={PROVIDER_GOOGLE}>
-          <Box
-            position='absolute'
-            top={10}
-            right={10}
-            width='$20'
-            height='$12'
-            backgroundColor='$blue400'
-            rounded='$full'
-            flexDirection='row'
-            justifyContent='center'
-            gap='$2'
-            alignItems='center'>
-            <Text color='$white'>{userPoints}</Text>
-            <Icon as={StarIcon} color='$white' />
-          </Box>
-        </MapView>
+          provider={PROVIDER_GOOGLE}></MapView>
         <BottomSheet ref={bottomSheetRef} index={1} snapPoints={snapPoints}>
           <BottomSheetView>
             <MapFilters {...filters} />
           </BottomSheetView>
         </BottomSheet>
       </Box>
+      <Fab
+        size='lg'
+        placement='top right'
+        isHovered={false}
+        isDisabled={false}
+        isPressed={false}
+        onPress={_handleOnPointsClick}>
+        <FabIcon as={StarIcon} mr='$1' />
+        <FabLabel>{userPoints}</FabLabel>
+      </Fab>
+      <Fab
+        size='lg'
+        placement='bottom center'
+        isHovered={false}
+        isDisabled={false}
+        isPressed={false}
+        paddingHorizontal='$20'
+        bottom={35}
+        backgroundColor='$blue400'
+        onPress={() => navigation.navigate("Scan")}>
+        {/* <FabIcon as={AddIcon} mr='$1' /> */}
+        <FabLabel>Scan</FabLabel>
+      </Fab>
     </Box>
   );
 };
