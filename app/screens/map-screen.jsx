@@ -6,12 +6,18 @@ import { Box, Fab, FabIcon, FabLabel, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import useLocation from "../hooks/use-location";
+import mapStyle from "../assets/mapstyles.json";
+import markerFactory from "../data/markers-factory";
+import MapMarkers from "../components/map-markers";
+
+const MARKERS = 20;
 
 const MapScreen = ({ navigation }) => {
   const { user } = useAuth();
   const filters = useFilters();
   const { location, BUDAPEST, getUserLocation } = useLocation();
   const [region, setRegion] = React.useState(null);
+  const [markers, setMarkers] = React.useState([]);
   const mapRef = useRef(null);
 
   _handleOnPointsClick = async () => {
@@ -38,14 +44,18 @@ const MapScreen = ({ navigation }) => {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     });
+    setMarkers(markerFactory.mockMarkers(MARKERS, location.coords));
   }, [location]);
 
   const userPoints = user?.points || 0;
 
   return (
     <Box style={{ flex: 1 }}>
+      {/* MAP */}
       <Box style={{ flex: 1, height: "50%" }}>
         <MapView
+          tracksViewChanges={false}
+          customMapStyle={mapStyle}
           ref={mapRef}
           style={{ width: "100%", height: "70%" }}
           initialRegion={{
@@ -55,10 +65,15 @@ const MapScreen = ({ navigation }) => {
             longitudeDelta: 0.0421,
           }}
           minZoomLevel={15}
-          maxZoomLevel={16}
+          maxZoomLevel={17}
           region={region}
           showsUserLocation={true}
-          provider={PROVIDER_GOOGLE}></MapView>
+          provider={PROVIDER_GOOGLE}
+          moveOnMarkerPress={false}>
+          <MapMarkers markers={markers} />
+        </MapView>
+
+        {/* BOTTOM SHEET */}
         <BottomSheet ref={bottomSheetRef} index={1} snapPoints={snapPoints}>
           <BottomSheetView>
             <MapFilters {...filters} />
