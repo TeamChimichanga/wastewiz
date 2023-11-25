@@ -10,6 +10,7 @@ import mapStyle from "../assets/mapstyles.json";
 import markerFactory from "../data/markers-factory";
 import MapMarkers from "../components/map-markers";
 import useProximityChecker from "../hooks/use-proximity-checker";
+import ProximityNotification from "../components/proximity-notification";
 
 const MARKERS = 20;
 
@@ -20,26 +21,14 @@ const MapScreen = ({ navigation }) => {
   const [region, setRegion] = React.useState(null);
   const [markers, setMarkers] = React.useState([]);
   const mapRef = useRef(null);
-
-  const filteredMarkers = markers.filter((marker) => filters.isSelected(marker.type));
-
-  const { inProximity, proximityMarkers } = useProximityChecker({ markers: filteredMarkers, location });
-
-  _handleOnPointsClick = async () => {
-    await getUserLocation();
-    mapRef.current.animateToRegion({
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    });
-  };
-
-  // ref
+  const showInProximity = useRef(false);
   const bottomSheetRef = useRef(null);
-
-  // variables
   const snapPoints = useMemo(() => ["30%", "50%"], []);
+  const filteredMarkers = markers.filter((marker) => filters.isSelected(marker.type));
+  const { inProximity, proximityMarkers } = useProximityChecker({ markers: filteredMarkers, location });
+  const userPoints = user?.points || 0;
+  console.log({ user });
+  const [showModal, setShowModal] = React.useState(false);
 
   useEffect(() => {
     if (!location) return;
@@ -52,7 +41,29 @@ const MapScreen = ({ navigation }) => {
     setMarkers(markerFactory.mockMarkers(MARKERS, location.coords));
   }, [location]);
 
-  const userPoints = user?.points || 0;
+  useEffect(() => {
+    if (!inProximity) return;
+    if (showInProximity.current) return;
+    showInProximity.current = true;
+    setShowModal(true);
+  }, [inProximity]);
+
+  useEffect(() => {
+    if (!proximityMarkers.length) return;
+    if (!showModal) return;
+    showInProximity.current = false;
+    setShowModal(false);
+  }, [filters.selectedFilters]);
+
+  _handleOnPointsClick = async () => {
+    await getUserLocation();
+    mapRef.current.animateToRegion({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  };
 
   return (
     <Box style={{ flex: 1 }}>
@@ -109,6 +120,8 @@ const MapScreen = ({ navigation }) => {
           <FabLabel>Scan</FabLabel>
         </Fab>
       )}
+      {/* MODAL */}
+      <ProximityNotification showModal={showModal} closeModal={setShowModal} proximityMarkers={proximityMarkers} />
     </Box>
   );
 };

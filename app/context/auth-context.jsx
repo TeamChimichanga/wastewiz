@@ -6,7 +6,7 @@ const AuthContext = React.createContext();
 
 export const useAuth = () => React.useContext(AuthContext);
 
-const USER_KEY = "wizard";
+const USER_KEY = "wizard_w";
 
 const AuthContextProvider = ({ children }) => {
   const { get, set } = useLocalStorage();
@@ -33,13 +33,15 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const updateUserPoints = (points) => {
-    const user = get(USER_KEY, true);
-
     if (!user) {
       return;
     }
 
+    console.log({ user });
+
     const updatedUser = authFactory.addPoints(user, points);
+
+    console.log({ updatedUser });
 
     set(USER_KEY, updatedUser);
     setUser(updatedUser);

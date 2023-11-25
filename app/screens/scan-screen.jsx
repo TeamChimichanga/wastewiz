@@ -18,7 +18,7 @@ import ScanAreaSVG from "../components/scan-area";
 import { Camera } from "expo-camera";
 import { CameraIcon } from "lucide-react-native";
 import { Text } from "@gluestack-ui/themed";
-import Notification from "../components/notification";
+import ResultNotification from "../components/result-notification";
 import predictApi from "../data/predict-api";
 
 const base64ToImageURI = (base64String) => {
@@ -39,6 +39,7 @@ const ScanScreen = ({ navigation, route }) => {
   const [showModal, setShowModal] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState(null);
+  const [predictions, setPredictions] = React.useState(null);
 
   let camera = null;
 
@@ -62,6 +63,7 @@ const ScanScreen = ({ navigation, route }) => {
     setImage(base64ToImageURI(response.result_image_base64));
     // Checks if any of the predicted classes match the proximity markers
     const predictionMatches = predictionMatchesProximity(response.unique_classes, proximityMarkers);
+    setPredictions(response.unique_classes);
     setResult(predictionMatches);
     setShowModal(true);
   };
@@ -179,7 +181,7 @@ const ScanScreen = ({ navigation, route }) => {
           />
         </VStack>
       )}
-      <Notification showModal={showModal} closeModal={_closeModal} result={result} />
+      <ResultNotification showModal={showModal} closeModal={_closeModal} result={result} predictions={predictions} />
     </Box>
   );
 };

@@ -23,7 +23,7 @@ const getImage = (result) => {
   }
 };
 
-const Notification = ({ showModal, closeModal, result }) => {
+const ResultNotification = ({ showModal, closeModal, result, predictions }) => {
   const ref = React.useRef(null);
   const { updateUserPoints } = useAuth();
   const { getQuote, getTitle } = useWizardQuotes();
@@ -31,6 +31,7 @@ const Notification = ({ showModal, closeModal, result }) => {
   const text = getQuote(success);
   const title = getTitle(success);
   const image = getImage(success);
+  const predictionResult = !predictions ? "" : predictions.join(", ");
 
   const _handleCloseModal = () => {
     if (result) {
@@ -58,9 +59,13 @@ const Notification = ({ showModal, closeModal, result }) => {
             <Text textAlign='center'>{text}</Text>
             {success && (
               <Text textAlign='center'>
-                You will receive <Text fontWeight='$bold'>100</Text> points as succesfully recycle.
+                You will receive <Text fontWeight='$bold'>100</Text> points as succesfull recycle.
               </Text>
             )}
+
+            <Text textAlign='center'>
+              Detected object is composed of <Text fontWeight='$bold'>{predictionResult}</Text>.
+            </Text>
           </VStack>
         </ModalBody>
         <ModalFooter>
@@ -73,4 +78,4 @@ const Notification = ({ showModal, closeModal, result }) => {
   );
 };
 
-export default Notification;
+export default ResultNotification;
