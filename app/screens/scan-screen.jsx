@@ -1,17 +1,44 @@
 import { Dimensions, View } from "react-native";
 import React from "react";
-import { Box, Button, ButtonText, Fab, FabIcon, FabLabel, Image, SearchIcon } from "@gluestack-ui/themed";
+import {
+  Box,
+  Button,
+  ButtonText,
+  Center,
+  Fab,
+  FabIcon,
+  FabLabel,
+  Image,
+  SearchIcon,
+  Spinner,
+  VStack,
+} from "@gluestack-ui/themed";
 import * as ImagePicker from "expo-image-picker";
 import ScanAreaSVG from "../components/scan-area";
 import { Camera } from "expo-camera";
 import { CameraIcon } from "lucide-react-native";
 import { Text } from "@gluestack-ui/themed";
 import Notification from "../components/notification";
+import predictApi from "../data/predict-api";
 
-const ScanScreen = ({ navigation }) => {
+const base64ToImageURI = (base64String) => {
+  const prefix = Platform.OS === "android" ? "data:image/jpeg;base64," : "data:image/jpeg;base64,";
+  return `${prefix}${base64String}`;
+};
+
+const predictionMatchesProximity = (predictionClasses, proximityMarkers) => {
+  const proximityMarkersTypes = proximityMarkers.map((marker) => marker.toLowerCase());
+  const predictionTypes = predictionClasses.map((marker) => marker.toLowerCase());
+  return predictionTypes.some((type) => proximityMarkersTypes.includes(type));
+};
+
+const ScanScreen = ({ navigation, route }) => {
+  const { proximityMarkers } = route.params || { proximityMarkers: [] };
   const [image, setImage] = React.useState(null);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [showModal, setShowModal] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [result, setResult] = React.useState(null);
 
   let camera = null;
 
@@ -25,10 +52,18 @@ const ScanScreen = ({ navigation }) => {
       base64: true,
     });
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-      setShowModal(true);
+    if (result.canceled) {
+      return;
     }
+
+    setLoading(true);
+    const response = await predictApi.predict(result.assets[0].uri);
+    setLoading(false);
+    setImage(base64ToImageURI(response.result_image_base64));
+    // Checks if any of the predicted classes match the proximity markers
+    const predictionMatches = predictionMatchesProximity(response.unique_classes, proximityMarkers);
+    setResult(predictionMatches);
+    setShowModal(true);
   };
 
   const _takePicture = async () => {
@@ -52,6 +87,14 @@ const ScanScreen = ({ navigation }) => {
       navigation.navigate("Map");
     }
   };
+
+  if (loading) {
+    return (
+      <Center flex={1}>
+        <Spinner />
+      </Center>
+    );
+  }
 
   return (
     <Box flex={1} backgroundColor='$white'>
@@ -124,13 +167,19 @@ const ScanScreen = ({ navigation }) => {
       )}
 
       {image && (
-        <Image
-          source={{ uri: image }}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
-          alt='scanned image'
-        />
+        <VStack position='relative'>
+          <Text position='absolute' top={10} right={0}>
+            In proximity: {proximityMarkers.map((marker) => marker.toLowerCase()).join(", ")}
+          </Text>
+          <Image
+            source={{ uri: image }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            alt='scanned image'
+            position='relative'
+          />
+        </VStack>
       )}
-      <Notification showModal={showModal} closeModal={_closeModal} />
+      <Notification showModal={showModal} closeModal={_closeModal} result={result} />
     </Box>
   );
 };

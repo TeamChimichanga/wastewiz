@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { useAuth } from "../context/auth-context";
-import BottomSheet, { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import MapFilters from "../components/map-filters";
 import { Box, Fab, FabIcon, FabLabel, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
@@ -23,7 +23,7 @@ const MapScreen = ({ navigation }) => {
 
   const filteredMarkers = markers.filter((marker) => filters.isSelected(marker.type));
 
-  const { inProximity } = useProximityChecker({ markers: filteredMarkers, location });
+  const { inProximity, proximityMarkers } = useProximityChecker({ markers: filteredMarkers, location });
 
   _handleOnPointsClick = async () => {
     await getUserLocation();
@@ -105,7 +105,7 @@ const MapScreen = ({ navigation }) => {
           paddingHorizontal='$20'
           bottom={35}
           backgroundColor='$blue400'
-          onPress={() => navigation.navigate("Scan")}>
+          onPress={() => navigation.navigate("Scan", { proximityMarkers })}>
           <FabLabel>Scan</FabLabel>
         </Fab>
       )}

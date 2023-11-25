@@ -6,6 +6,8 @@ const AuthContext = React.createContext();
 
 export const useAuth = () => React.useContext(AuthContext);
 
+const USER_KEY = "wizard";
+
 const AuthContextProvider = ({ children }) => {
   const { get, set } = useLocalStorage();
   const [user, setUser] = useState(null);
@@ -15,31 +17,31 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   _fetchUser = async () => {
-    const user = await get("user", true);
+    const user = await get(USER_KEY, true);
     setUser(user);
   };
 
   const login = (username) => {
     const user = authFactory.createNewUser(username);
-    set("user", user);
+    set(USER_KEY, user);
     setUser(user, user);
   };
 
   const logout = () => {
-    set("user", null);
+    set(USER_KEY, null);
     setUser(null);
   };
 
   const updateUserPoints = (points) => {
-    const user = get("user", true);
+    const user = get(USER_KEY, true);
 
     if (!user) {
       return;
     }
 
-    const updatedUser = authFactory.updateUserPoints(user, points);
+    const updatedUser = authFactory.addPoints(user, points);
 
-    set("user", updatedUser);
+    set(USER_KEY, updatedUser);
     setUser(updatedUser);
   };
 

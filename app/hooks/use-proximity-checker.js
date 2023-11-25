@@ -63,7 +63,7 @@ const useProximityChecker = ({ markers, location }) => {
 
   return {
     inProximity: proximityMarkers.length > 0,
-    proximityMarkers,
+    proximityMarkers: [...new Set(proximityMarkers.map((marker) => marker.type))],
   };
 };
 
