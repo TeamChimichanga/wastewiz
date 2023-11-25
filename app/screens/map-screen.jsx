@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import { useAuth } from "../context/auth-context";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import MapFilters from "../components/map-filters";
-import { AddIcon, Box, Fab, FabIcon, FabLabel, Icon, Pressable, StarIcon } from "@gluestack-ui/themed";
+import { Box, Fab, FabIcon, FabLabel, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import useLocation from "../hooks/use-location";
@@ -85,7 +85,6 @@ const MapScreen = ({ navigation }) => {
         bottom={35}
         backgroundColor='$blue400'
         onPress={() => navigation.navigate("Scan")}>
-        {/* <FabIcon as={AddIcon} mr='$1' /> */}
         <FabLabel>Scan</FabLabel>
       </Fab>
     </Box>

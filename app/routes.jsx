@@ -7,12 +7,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
+const __DEV__ = false;
+
 const Routes = () => {
   const { loggedIn } = useAuth();
 
   return (
     <Stack.Navigator>
-      {loggedIn ? (
+      {loggedIn && !__DEV__ ? (
         <>
           <Stack.Screen name='Map' options={{ title: "WasteWiz 🧙" }} component={MapScreen} />
           <Stack.Screen
