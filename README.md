@@ -14,20 +14,32 @@
     WasteWiz is a comprehensive mobile app designed to enhance your recycling experience. With AI-powered <b>object detection</b> model support and automated trash bin finder, WasteWiz empowers the regular users to separate the waste on-the-go.
   <br />
   <br />
-  • AI-powered live chat support available 24/7 for instant assistance and guidance.
+  ## Features
+  
+- **Nearby Disposal Options:** WasteWiz not only identifies the type of waste but also provides users with information on nearby disposal options.
+- **Scan & Identify:** WasteWiz utilizes advanced image recognition to instantly identify the material composition of various waste items.
+- **Classification:** Once scanned, the app accurately categorizes the waste into specific types such as paper, plastic, bio waste, glass, and more.
+- **Gamification:** Gain points when making informed decisions about recycling and proper disposal. Points can be used to purchase in various ways in cooperation with our external partners and stakeholders.
   <br />
-  • Automated project evaluation based on GitHub repositories, providing detailed feedback and suggestions for improvement.
+  <br />
+  ## Benefits
+
+- **Environmental Consciousness:** Contribute to a sustainable environment by correctly disposing of waste materials.
+- **Convenience:** Easily find nearby waste disposal facilities or recycling centers.
+- **Education:** Learn about the various waste categories and their impact on the environment.
   <br />
   <br />
-  Additionally, HackBud offers organizers the convenience of exporting participant data directly from the app. Easily manage and analyze participant information for efficient event organization.
-  <br />
-  <br />
-  Join the revolution in hackathon participation with HackBud. Elevate your experience, receive continuous support, and unleash your potential. Get ready to excel with HackBud!
+## Future Enhancements
+
+- Integration of a community-driven database for disposal locations.
+- Real-time updates on recycling initiatives and environmental news.
+- More gamification elements to encourage and reward sustainable waste disposal practices.
 </p>
 
 # Technologies
 [![React-Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
+[![Python](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/1r0TNJwrDj8MI69udwR6wL/Hackatons?type=design&node-id=0-1&t=4B1xzulJbqNcGLMo-0)
 
 # Mockup
