@@ -11,7 +11,7 @@
   Introducing WasteWiz, your ultimate companion for recycling and seeking the closest trash bin!
   <br />
   <br />
-    WasteWiz is a comprehensive mobile app designed to enhance your recycling experience. With AI-powered <b>object detection</b>b> model support and automated trash bin finder, WasteWiz empowers the regular users to separate the waste on-the-go.
+    WasteWiz is a comprehensive mobile app designed to enhance your recycling experience. With AI-powered <b>object detection</b> model support and automated trash bin finder, WasteWiz empowers the regular users to separate the waste on-the-go.
   <br />
   <br />
   • AI-powered live chat support available 24/7 for instant assistance and guidance.
