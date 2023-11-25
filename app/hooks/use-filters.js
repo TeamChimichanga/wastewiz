@@ -1,24 +1,25 @@
 import React from "react";
 
 export const FILTERS = [
-  { label: "Paper", color: "$green400" },
-  { label: "Plastic", color: "$blue400" },
-  { label: "Glass", color: "$yellow400" },
-  { label: "Metal", color: "$red400" },
+  { label: "Paper", color: "$blue500", type: "Paper" },
+  { label: "Plastic", color: "$amber400", type: "Plastic" },
+  { label: "Glass", color: "$coolGray300", type: "Glass" },
+  { label: "Metal", color: "$coolGray400", type: "Metal" },
+  { label: "Bottles", color: "$teal400", type: "Bottles" },
 ];
 
 const useFilters = () => {
-  const [selectedFilters, setSelectedFilter] = React.useState(FILTERS.map((f) => f.label));
+  const [selectedFilters, setSelectedFilter] = React.useState(FILTERS.map((f) => f.type));
 
-  const selectFilter = (label) => {
-    if (selectedFilters.includes(label)) {
-      setSelectedFilter(selectedFilters.filter((f) => f !== label));
+  const selectFilter = (type) => {
+    if (selectedFilters.includes(type)) {
+      setSelectedFilter(selectedFilters.filter((f) => f !== type));
     } else {
-      setSelectedFilter([...selectedFilters, label]);
+      setSelectedFilter([...selectedFilters, type]);
     }
   };
 
-  const isSelected = (label) => selectedFilters.includes(label);
+  const isSelected = (type) => selectedFilters.includes(type);
 
   return {
     selectedFilters,

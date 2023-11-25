@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { useAuth } from "../context/auth-context";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
 import MapFilters from "../components/map-filters";
 import { Box, Fab, FabIcon, FabLabel, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
@@ -9,6 +9,7 @@ import useLocation from "../hooks/use-location";
 import mapStyle from "../assets/mapstyles.json";
 import markerFactory from "../data/markers-factory";
 import MapMarkers from "../components/map-markers";
+import useProximityChecker from "../hooks/use-proximity-checker";
 
 const MARKERS = 20;
 
@@ -19,6 +20,10 @@ const MapScreen = ({ navigation }) => {
   const [region, setRegion] = React.useState(null);
   const [markers, setMarkers] = React.useState([]);
   const mapRef = useRef(null);
+
+  const filteredMarkers = markers.filter((marker) => filters.isSelected(marker.type));
+
+  const { inProximity } = useProximityChecker({ markers: filteredMarkers, location });
 
   _handleOnPointsClick = async () => {
     await getUserLocation();
@@ -70,14 +75,14 @@ const MapScreen = ({ navigation }) => {
           showsUserLocation={true}
           provider={PROVIDER_GOOGLE}
           moveOnMarkerPress={false}>
-          <MapMarkers markers={markers} />
+          <MapMarkers markers={filteredMarkers} />
         </MapView>
 
         {/* BOTTOM SHEET */}
         <BottomSheet ref={bottomSheetRef} index={1} snapPoints={snapPoints}>
-          <BottomSheetView>
+          <BottomSheetScrollView>
             <MapFilters {...filters} />
-          </BottomSheetView>
+          </BottomSheetScrollView>
         </BottomSheet>
       </Box>
       <Fab
@@ -90,18 +95,20 @@ const MapScreen = ({ navigation }) => {
         <FabIcon as={StarIcon} mr='$1' />
         <FabLabel>{userPoints}</FabLabel>
       </Fab>
-      <Fab
-        size='lg'
-        placement='bottom center'
-        isHovered={false}
-        isDisabled={false}
-        isPressed={false}
-        paddingHorizontal='$20'
-        bottom={35}
-        backgroundColor='$blue400'
-        onPress={() => navigation.navigate("Scan")}>
-        <FabLabel>Scan</FabLabel>
-      </Fab>
+      {inProximity && (
+        <Fab
+          size='lg'
+          placement='bottom center'
+          isHovered={false}
+          isDisabled={false}
+          isPressed={false}
+          paddingHorizontal='$20'
+          bottom={35}
+          backgroundColor='$blue400'
+          onPress={() => navigation.navigate("Scan")}>
+          <FabLabel>Scan</FabLabel>
+        </Fab>
+      )}
     </Box>
   );
 };
