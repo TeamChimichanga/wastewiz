@@ -37,9 +37,9 @@
 
 ## Future Enhancements 🚀
 
-- Integration of a community-driven database for disposal locations.
-- Real-time updates on recycling initiatives and environmental news.
-- More gamification elements to encourage and reward sustainable waste disposal practices.
+- **Integration of a community-driven database** for disposal locations.
+- **Real-time updates on recycling** initiatives and environmental news.
+- **More gamification elements** to encourage and reward sustainable waste disposal practices.
 </p>
 
 # Mockup 📱
