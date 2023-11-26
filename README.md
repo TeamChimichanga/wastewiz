@@ -45,21 +45,7 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/UTDm2iRQjpUUWhzpWZ165i/WasteWiz?type=design&node-id=0-1&mode=design&t=iBQK8x2EEPNVv8gx-0)
 
 # Mockup
-
-<table>
-  <tr>
-    <td><img src="images/Mockup 1.png" /></td>
-    <td><img src="images/Mockup 2.png" /></td>
-    <td><img src="images/Mockup 3.png" /></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td><img src="images/Admin Message Centre.png" /></td>
-    <td><img src="images/Data processing 1.png" /></td>
-    <td><img src="images/Data processing 2.png" /></td>
-  </tr>
-</table>
+<img src="images/flow.png" /></td>
 
 # About us
 <img src="images/team.png" /></td>
