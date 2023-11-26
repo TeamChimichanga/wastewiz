@@ -43,9 +43,9 @@
 </p>
 
 <br />
+
 # Mockup 📱
 <img src="images/flow2.png" /></td>
 
-<br />
 # About us 🤝
 <img src="images/team.png" /></td>
