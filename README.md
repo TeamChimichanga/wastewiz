@@ -35,15 +35,15 @@
 - More gamification elements to encourage and reward sustainable waste disposal practices.
 </p>
 
-# Technologies
+# Technologies 🔧
 
 [![React-Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 [![Python](https://img.shields.io/badge/Python-05ADB3?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/UTDm2iRQjpUUWhzpWZ165i/WasteWiz?type=design&node-id=0-1&mode=design&t=iBQK8x2EEPNVv8gx-0)
 
-# Mockup
+# Mockup 📱
 <img src="images/flow2.png" /></td>
 
-# About us
+# About us 🤝
 <img src="images/team.png" /></td>
