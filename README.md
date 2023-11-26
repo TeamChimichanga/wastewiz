@@ -45,7 +45,7 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/UTDm2iRQjpUUWhzpWZ165i/WasteWiz?type=design&node-id=0-1&mode=design&t=iBQK8x2EEPNVv8gx-0)
 
 # Mockup
-<img src="images/flow.png" /></td>
+<img src="images/flow2.png" /></td>
 
 # About us
 <img src="images/team.png" /></td>
