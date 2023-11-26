@@ -1,5 +1,7 @@
 # WasteWiz: You shall not waste!
-<img width='40%' heigth='40%' src="images/WasteWiz_loading.gif" />
+<p align="center" >
+  <img width='40%' heigth='40%' src="images/WasteWiz_loading.gif" />
+</p>
 
 # Description
 
