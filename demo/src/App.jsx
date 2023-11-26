@@ -22,8 +22,10 @@ function App() {
   };
 
   const handleUpload = async () => {
+    setLoading(true);
     const response = await predictApi.predict(selectedFile);
-    console.log({ response });
+    setLoading(false);
+    setPrediction(response);
   };
 
   useEffect(() => {
@@ -58,7 +60,7 @@ function App() {
   return (
     <>
       <div>
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
+        <a href='https://github.com/TeamChimichanga/wastewiz' target='_blank' rel='noreferrer'>
           <img src={WasteWizLogo} className='logo' alt='WasteWiz' />
         </a>
       </div>
@@ -66,7 +68,7 @@ function App() {
       <p className='read-the-docs'>
         <b>Disclamer:</b> This is just a DEMO for the object detection and prediction model. WasteWiz is a mobile
         application with more features. You can see the source code by clicking on the logo above or see the video
-        showcasing the app here: <a href='www.google.com'>video</a>.
+        showcasing the app here: <a href='https://github.com/TeamChimichanga/wastewiz'>video</a>.
       </p>
       <div className='card'>
         <input type='file' onChange={handleFileChange} />

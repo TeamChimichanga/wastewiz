@@ -11,10 +11,10 @@ const predict = async (imageUri) => {
   });
 
   try {
-    const response = await axios.post(`${API_URL}/predict`, formData);
+    const response = await axios.post(`${API_URL}predict`, formData);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log({ error: error });
     return null;
   }
 };
