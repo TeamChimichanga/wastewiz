@@ -62,21 +62,4 @@
 </table>
 
 # About us
-
-<table>
-  <tr>
-    <td><img src="images/team.png" /></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td><a href="https://www.linkedin.com/in/amadej-%C5%A1enk/"><img src="images/Amadej.png" /></a></td>
-    <td><a href="https://www.linkedin.com/in/lukatomazic/"><img src="images/Luka.png" /></a></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td><a href="https://www.linkedin.com/in/vita-poto%C4%8Dnik-a4aaa01b8/"><img src="images/Vita.png" /></a></td>
-    <td><a href="https://www.linkedin.com/in/martin-%C5%A1trekelj/"><img src="images/Martin.png" /></a></td>
-  </tr>
-</table>
+<img src="images/team.png" /></td>
