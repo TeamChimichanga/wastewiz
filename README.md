@@ -1,4 +1,5 @@
 # WasteWiz: You shall not waste!
+
 <br />
 <br />
 <p align="center" >
@@ -27,9 +28,8 @@
 
 - **Environmental Consciousness:** Contribute to a sustainable environment by correctly disposing of waste materials.
 - **Convenience:** Easily find nearby waste disposal facilities or recycling centers.
-- **Education:** Learn about the various waste categories and their impact on the environment.
-  <br />
-  <br />
+- **Education:** Learn about the various waste categories and their impact on the environment. <br /> <br />
+
 ## Future Enhancements
 
 - Integration of a community-driven database for disposal locations.
@@ -38,12 +38,14 @@
 </p>
 
 # Technologies
+
 [![React-Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 [![Python](https://img.shields.io/badge/Python-05ADB3?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/1r0TNJwrDj8MI69udwR6wL/Hackatons?type=design&node-id=0-1&t=4B1xzulJbqNcGLMo-0)
 
 # Mockup
+
 <table>
   <tr>
     <td><img src="images/Mockup 1.png" /></td>
@@ -60,6 +62,7 @@
 </table>
 
 # About us
+
 <table>
   <tr>
     <td><img src="images/Team members banner.png" /></td>
@@ -77,4 +80,3 @@
     <td><a href="https://www.linkedin.com/in/martin-%C5%A1trekelj/"><img src="images/Martin.png" /></a></td>
   </tr>
 </table>
-
