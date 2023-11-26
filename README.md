@@ -19,8 +19,8 @@
 - **Scan & Identify:** WasteWiz utilizes advanced image recognition to instantly identify the material composition of various waste items.
 - **Classification:** Once scanned, the app accurately categorizes the waste into specific types such as paper, plastic, bio waste, glass, and more.
 - **Gamification:** Gain points when making informed decisions about recycling and proper disposal. Points can be used to purchase in various ways in cooperation with our external partners and stakeholders.
-  <br />
-  <br />
+ 
+<br />
   
 ## Benefits 🌿
 
@@ -28,12 +28,16 @@
 - **Convenience:** Easily find nearby waste disposal facilities or recycling centers.
 - **Education:** Learn about the various waste categories and their impact on the environment. <br /> <br />
 
+<br />
+
 ## Technologies 🔧
 
 [![React-Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 [![Python](https://img.shields.io/badge/Python-05ADB3?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/UTDm2iRQjpUUWhzpWZ165i/WasteWiz?type=design&node-id=0-1&mode=design&t=iBQK8x2EEPNVv8gx-0)
+
+<br />
 
 ## Future Enhancements 🚀
 
@@ -46,6 +50,8 @@
 
 # Mockup 📱
 <img src="images/flow2.png" /></td>
+
+<br />
 
 # About us 🤝
 <img src="images/team.png" /></td>
