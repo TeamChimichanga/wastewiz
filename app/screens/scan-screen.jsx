@@ -20,6 +20,7 @@ import { CameraIcon } from "lucide-react-native";
 import { Text } from "@gluestack-ui/themed";
 import ResultNotification from "../components/result-notification";
 import predictApi from "../data/predict-api";
+import Loading from "../components/loading";
 
 const base64ToImageURI = (base64String) => {
   const prefix = Platform.OS === "android" ? "data:image/jpeg;base64," : "data:image/jpeg;base64,";
@@ -92,9 +93,7 @@ const ScanScreen = ({ navigation, route }) => {
 
   if (loading) {
     return (
-      <Center flex={1}>
-        <Spinner />
-      </Center>
+        <Loading />
     );
   }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const FIVE_SECONDS = 5000;
 const TEN_SECONDS = 2 * FIVE_SECONDS;
-const FIVE_HUNDRED_METERS = 500;
+export const PROXIMITY_RANGE = 250; // in meters
 const EARTH_RADIUS = 6371; // Earth's radius in kilometers
 
 function areCoordinatesClose(lat1, lon1, lat2, lon2) {
@@ -22,7 +22,7 @@ function areCoordinatesClose(lat1, lon1, lat2, lon2) {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = EARTH_RADIUS * c * 1000; // Convert to meters
 
-  return distance <= FIVE_HUNDRED_METERS;
+  return distance <= PROXIMITY_RANGE;
 }
 
 const useProximityChecker = ({ markers, location }) => {

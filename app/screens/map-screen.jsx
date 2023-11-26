@@ -4,12 +4,12 @@ import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import MapFilters from "../components/map-filters";
 import { Box, Fab, FabIcon, FabLabel, StarIcon } from "@gluestack-ui/themed";
 import useFilters from "../hooks/use-filters";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Circle } from "react-native-maps";
 import useLocation from "../hooks/use-location";
 import mapStyle from "../assets/mapstyles.json";
 import markerFactory from "../data/markers-factory";
 import MapMarkers from "../components/map-markers";
-import useProximityChecker from "../hooks/use-proximity-checker";
+import useProximityChecker, { PROXIMITY_RANGE } from "../hooks/use-proximity-checker";
 import ProximityNotification from "../components/proximity-notification";
 
 const MARKERS = 20;
@@ -27,7 +27,6 @@ const MapScreen = ({ navigation }) => {
   const filteredMarkers = markers.filter((marker) => filters.isSelected(marker.type));
   const { inProximity, proximityMarkers } = useProximityChecker({ markers: filteredMarkers, location });
   const userPoints = user?.points || 0;
-  console.log({ user });
   const [showModal, setShowModal] = React.useState(false);
 
   useEffect(() => {
@@ -86,6 +85,16 @@ const MapScreen = ({ navigation }) => {
           showsUserLocation={true}
           provider={PROVIDER_GOOGLE}
           moveOnMarkerPress={false}>
+          {region && (
+            <Circle
+              center={{ latitude: region.latitude, longitude: region.longitude }}
+              radius={PROXIMITY_RANGE}
+              fillColor='rgba(255, 0, 0, 0.2)' // Red color with transparency
+              strokeWidth={1}
+              strokeColor='rgba(255, 0, 0, 0.5)' // Red color with transparency for the stroke
+            />
+          )}
+
           <MapMarkers markers={filteredMarkers} />
         </MapView>
 
