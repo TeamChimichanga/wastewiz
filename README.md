@@ -17,6 +17,9 @@
 <br />
 <br />
 
+# Mockup 📱
+<img src="images/flow2.png" /></td>
+
  ## Features 🌟
   
 - **Nearby Disposal Options:** WasteWiz not only identifies the type of waste but also provides users with information on nearby disposal options.
@@ -49,11 +52,6 @@
 - **Real-time updates on recycling** initiatives and environmental news.
 - **More gamification elements** to encourage and reward sustainable waste disposal practices.
 </p>
-
-<br />
-
-# Mockup 📱
-<img src="images/flow2.png" /></td>
 
 <br />
 
