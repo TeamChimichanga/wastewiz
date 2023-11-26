@@ -65,7 +65,7 @@
 
 <table>
   <tr>
-    <td><img src="images/Team members banner.png" /></td>
+    <td><img src="images/team.png" /></td>
   </tr>
 </table>
 <table>
