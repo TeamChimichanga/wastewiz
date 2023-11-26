@@ -42,8 +42,10 @@
 - **More gamification elements** to encourage and reward sustainable waste disposal practices.
 </p>
 
+<br />
 # Mockup 📱
 <img src="images/flow2.png" /></td>
 
+<br />
 # About us 🤝
 <img src="images/team.png" /></td>
