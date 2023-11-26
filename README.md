@@ -1,19 +1,19 @@
 # WasteWiz: You shall not waste!
-<p align="center" >
+<p align="center">
   <img width='40%' heigth='40%' src="images/WasteWiz_loading.gif" />
 </p>
 
 # Description
 
 <p align="justify">
-  Introducing WasteWiz, your ultimate companion for recycling and seeking the closest trash bin!
+  Introducing WasteWiz, your ultimate companion for recycling and seeking the closest trash bin! 🌍🧙‍♂️
   <br />
   <br />
-    WasteWiz is a comprehensive mobile app designed to enhance your recycling experience. With AI-powered <b>object detection</b> model support and automated trash bin finder, WasteWiz empowers the regular users to separate the waste on-the-go.
+  WasteWiz is a comprehensive mobile app designed to enhance your recycling experience. With AI-powered <b>object detection</b> model support and automated trash bin finder, WasteWiz empowers regular users to separate waste on-the-go.
   <br />
   <br />
   
- ## Features
+ ## Features 🌟
   
 - **Nearby Disposal Options:** WasteWiz not only identifies the type of waste but also provides users with information on nearby disposal options.
 - **Scan & Identify:** WasteWiz utilizes advanced image recognition to instantly identify the material composition of various waste items.
@@ -21,13 +21,14 @@
 - **Gamification:** Gain points when making informed decisions about recycling and proper disposal. Points can be used to purchase in various ways in cooperation with our external partners and stakeholders.
   <br />
   <br />
-  ## Benefits
+  
+## Benefits 🌿
 
 - **Environmental Consciousness:** Contribute to a sustainable environment by correctly disposing of waste materials.
 - **Convenience:** Easily find nearby waste disposal facilities or recycling centers.
 - **Education:** Learn about the various waste categories and their impact on the environment. <br /> <br />
 
-## Future Enhancements
+## Future Enhancements 🚀
 
 - Integration of a community-driven database for disposal locations.
 - Real-time updates on recycling initiatives and environmental news.
